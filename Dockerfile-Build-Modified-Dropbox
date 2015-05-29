@@ -1,0 +1,22 @@
+#base image
+FROM node:0.12.4-slim
+
+#add files ad set workdir
+COPY ./modifiedDropboxBuild/001-env.coffee /dropboxBuild/001-env.coffee
+WORKDIR /dropboxBuild
+
+#install dependecys
+RUN npm install -g coffee-script && \
+    npm install -g async && \
+    npm cache clean && \
+    npm install dropbox@0.10.3 && \
+    cp ./001-env.coffee ./node_modules/dropbox/src/001-env.coffee && \
+    cd ./node_modules/dropbox/ && \
+    npm pack && \
+    tar zxvf dropbox-0.10.3.tgz && \
+    cp ./package/lib/dropbox.js /dropboxBuild/dropbox.js && \
+    cd /dropboxBuild && \
+    rm -rf node_modules
+
+#launch
+CMD /bin/bash

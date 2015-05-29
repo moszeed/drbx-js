@@ -1,0 +1,25 @@
+{
+    "name": "drbx-js",
+    "version": "0.1.0",
+    "description": "Promise Dropbox-Api Wrapper",
+    "main": "/src/drbx.js",
+    "scripts": {
+        "test": "browserify ./test/*.js | tape-run"
+    },
+    "keywords": [
+        "dropbox",
+        "javascript",
+        "api",
+        "promises"
+    ],
+    "author": "Michael Röber",
+    "license": "MIT",
+    "devDependencies": {
+        "tape"              : "^4.0.0",
+        "tape-run"          : "^1.0.0",
+        "dropbox"           : "^0.10.3",
+        "es6-promise"       : "^2.1.1",
+        "phantom"           : "^0.7.2",
+        "phantomjs-polyfill": "^0.0.1"
+    }
+}
