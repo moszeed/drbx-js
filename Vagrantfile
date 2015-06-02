@@ -36,6 +36,14 @@ VSS_VM_BUILD_SCRIPT = <<EOF
     # build a custom dropbox.js build, needed until this pull request is
     # in stable (https://github.com/dropbox/dropbox-js/pull/183)
     docker build -f ./Dockerfile-Build-Modified-Dropbox -t "dropbox-build" .
+
+    echo "--> copy dropbox.js custom build to /client/scripts/libs/"
+    DROPBOX_BUILD_CONTAINER_ID=$(docker run -d dropbox-build)
+    docker cp $DROPBOX_BUILD_CONTAINER_ID:/dropboxBuild/dropbox.js ./src/libs
+
+    #build testing image
+    docker build -f ./Dockerfile-Testing -t "dropbox-testing" .
+
 EOF
 
 #
@@ -51,8 +59,6 @@ VSS_BOOT_SCRIPT = <<EOF
     echo "------------------------------------------"
     docker --version
     echo "------------------------------------------"
-    echo "Node.js Version in Build-Modified Image" && docker run dropbox-build node -v
-    echo "------------------------------------------"
     echo "\n"
 
     # first, stop all containers
@@ -66,9 +72,6 @@ VSS_BOOT_SCRIPT = <<EOF
     #change folder
     cd /drbx-js
 
-    echo "--> copy dropbox.js custom build to /client/scripts/libs/"
-    DROPBOX_BUILD_CONTAINER_ID=$(docker run -d dropbox-build)
-    docker cp $DROPBOX_BUILD_CONTAINER_ID:/dropboxBuild/dropbox.js ./src/libs
 EOF
 
 
@@ -83,7 +86,6 @@ Vagrant.configure(2) do |config|
     config.vm.define :vss do |vss|
 
         #network
-        #vss.vm.network "forwarded_port", guest: 8282, host: 8282
         vss.vm.network "public_network"
 
         #shared folders
