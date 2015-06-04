@@ -1,6 +1,9 @@
 #base image
 FROM node:0.12.4-slim
 
+# Exclude npm cache from the image
+VOLUME /root/.npm
+
 #add files ad set workdir
 COPY ./modifiedDropboxBuild/001-env.coffee /dropboxBuild/001-env.coffee
 WORKDIR /dropboxBuild
