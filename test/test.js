@@ -9,9 +9,15 @@
 
     //set a generated dropbox token, from the developer console, here !
     var token = null;
-    if (token === null) {
-        throw new Error('please set a generated dropbox token');
-    }
+
+    test('is token available', function(t) {
+        if (token === null) {
+            t.end('please set a generated dropbox token');
+        } else {
+            t.end();
+        }
+    });
+
 
 
     //check if require works
@@ -94,6 +100,17 @@
             })
             .catch(t.end);
     });
+
+    test('readFile', function (t) {
+
+        Drbx.readFile('/test-drbxjs.txt')
+            .then(function(fileData) {
+                t.ok(fileData === 'I am Test Content', 'equal content');
+                t.end();
+            })
+            .catch(t.end);
+    });
+
 
     test('search', function (t) {
 
