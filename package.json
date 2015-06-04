@@ -1,8 +1,8 @@
 {
     "name": "drbx-js",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Promise Dropbox-Api Wrapper",
-    "main": "/src/drbx.js",
+    "main": "./src/drbx.js",
     "scripts": {
         "test": "browserify ./test/*.js | tape-run"
     },
