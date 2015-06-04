@@ -10,8 +10,9 @@ WORKDIR /drbx-js
 
 #install dependecys
 RUN apt-get update && \
-    apt-get install -y bzip2 libfreetype6 python build-essential \
-                       libfontconfig && \
+    apt-get install -y g++ python bzip2\
+                       libfreetype6 make \
+                       libfontconfig curl && \
     npm install -g tape-run && \
     npm install -g browserify && \
     npm install -g phantomjs && \
