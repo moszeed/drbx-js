@@ -177,6 +177,32 @@
         };
 
         /**
+         * [readFile description]
+         * @param  {[type]} path [description]
+         * @param  {[type]} opts [description]
+         * @return {[type]}      [description]
+         */
+        Drbx.readFile = function(path, opts) {
+
+            return new Promise(
+                function writeAFile(resolve, reject) {
+
+                    if (!path) {
+                        return reject('no path given');
+                    }
+
+                    Drbx.Client.readFile(path, opts, function(err, fileData) {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve(fileData);
+                        }
+                    });
+                }
+            );
+        };
+
+        /**
          * [writeFile description]
          * @param  {[type]} path [description]
          * @param  {[type]} data [description]
