@@ -45,9 +45,8 @@
                 function doAuthenticate(resolve, reject) {
 
                     Drbx.Client.authenticate(function(error) {
-                        if (error) {
-                            reject(error);
-                        } else {
+                        if (error) reject(error);
+                        else {
                             resolve();
                         }
                     });
@@ -66,9 +65,8 @@
                 function callAccountInfo(resolve, reject) {
 
                     Drbx.Client.getAccountInfo(function(err, userData) {
-                        if (err) {
-                            reject(err);
-                        } else {
+                        if (err) reject(err);
+                        else {
                             resolve(userData);
                         }
                     });
@@ -85,14 +83,11 @@
             return new Promise(
                 function callStat(resolve, reject) {
 
-                    if (!path) {
-                        return reject('no path given');
-                    }
+                    if (!path) return reject('no path given');
 
                     Drbx.Client.stat(path, function(err, userData) {
-                        if (err) {
-                            reject(err);
-                        } else {
+                        if (err) reject(err);
+                        else {
                             resolve(userData);
                         }
                     });
@@ -111,14 +106,11 @@
             return new Promise(
                 function readDir(resolve, reject) {
 
-                    if (!path) {
-                        return reject('no path given');
-                    }
+                    if (!path) return reject('no path given');
 
                     Drbx.Client.readdir(path, opts, function(err, userData) {
-                        if (err) {
-                            reject(err);
-                        } else {
+                        if (err) reject(err);
+                        else {
                             resolve(userData);
                         }
                     });
@@ -137,9 +129,8 @@
                 function callStat(resolve, reject) {
 
                     Drbx.Client.delta(cursor, function(err, userData) {
-                        if (err) {
-                            reject(err);
-                        } else {
+                        if (err) reject(err);
+                        else {
                             resolve(userData);
                         }
                     });
@@ -157,18 +148,12 @@
             return new Promise(
                 function searchForFiles(resolve, reject) {
 
-                    if (!path) {
-                        return reject('no path given');
-                    }
-
-                    if (!namePattern) {
-                        return reject('no namePattern given');
-                    }
+                    if (!path) return reject('no path given');
+                    if (!namePattern) return reject('no namePattern given');
 
                     Drbx.Client.search(path, namePattern, opts, function(err, searchData) {
-                        if (err) {
-                            reject(err);
-                        } else {
+                        if (err) reject(err);
+                        else {
                             resolve(searchData);
                         }
                     });
@@ -187,14 +172,11 @@
             return new Promise(
                 function writeAFile(resolve, reject) {
 
-                    if (!path) {
-                        return reject('no path given');
-                    }
+                    if (!path) return reject('no path given');
 
                     Drbx.Client.readFile(path, opts, function(err, fileData) {
-                        if (err) {
-                            reject(err);
-                        } else {
+                        if (err) reject(err);
+                        else {
                             resolve(fileData);
                         }
                     });
@@ -210,22 +192,15 @@
          * @return {[type]}      [description]
          */
         Drbx.writeFile = function(path, data, opts) {
-
             return new Promise(
                 function writeAFile(resolve, reject) {
 
-                    if (!path) {
-                        return reject('no path given');
-                    }
-
-                    if (!data) {
-                        return reject('no data given');
-                    }
+                    if (!path) return reject('no path given');
+                    if (!data) return reject('no data given');
 
                     Drbx.Client.writeFile(path, data, opts, function(err, xhr) {
-                        if (err) {
-                            reject(err);
-                        } else {
+                        if (err) reject(err);
+                        else {
                             resolve(xhr);
                         }
                     });
@@ -243,14 +218,11 @@
             return new Promise(
                 function removeFileOrFolder(resolve, reject) {
 
-                    if (!path) {
-                        return reject('no path given');
-                    }
+                    if (!path) return reject('no path given');
 
                     Drbx.Client.remove(path, function(err, xhr) {
-                        if (err) {
-                            reject(err);
-                        } else {
+                        if (err) reject(err);
+                        else {
                             resolve(xhr);
                         }
                     });
@@ -269,18 +241,12 @@
             return new Promise(
                 function copyPath(resolve, reject) {
 
-                    if (!fromPath) {
-                        return reject('no fromPath given');
-                    }
-
-                    if (!toPath) {
-                        return reject('no toPath given');
-                    }
+                    if (!fromPath) return reject('no fromPath given');
+                    if (!toPath) return reject('no toPath given');
 
                     Drbx.Client.copy(fromPath, toPath, function(err, xhr) {
-                        if (err) {
-                            reject(err);
-                        } else {
+                        if (err) reject(err);
+                        else {
                             resolve(xhr);
                         }
                     });
