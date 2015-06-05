@@ -6,6 +6,8 @@
     require('es6-promise').polyfill();
 
     var test = require('tape');
+    var Drbx   = null;
+    var cursor = null;
 
     //set a generated dropbox token, from the developer console, here !
     var token = null;
@@ -18,13 +20,11 @@
         }
     });
 
-
-
     //check if require works
     test('require', function(t) {
 
         try {
-            require('../src/drbx.js');
+            Drbx = require('../src/drbx.js');
         }
         catch(err) {
             t.end(err);
@@ -35,10 +35,6 @@
     });
 
     //start with function tests
-
-    var Drbx   = require('../src/drbx.js');
-    var cursor = null;
-
     test('initialize', function (t) {
 
         Drbx.init({
@@ -161,5 +157,4 @@
             })
             .catch(t.end);
     });
-
 })();
