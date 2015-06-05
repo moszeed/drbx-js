@@ -7,7 +7,7 @@ a promise wrapper for the (un)official dropbox.js
 - less coffescript
 
 ####modifiedDropboxBuild
-drbx-js uses a modified dropbox.js file, with fixed browserify/nodejs handling  
+drbx-js uses a modified dropbox.js file, with fixed browserify/nodejs handling
 until this get merged: https://github.com/dropbox/dropbox-js/pull/183
 
 ##available methods
@@ -23,13 +23,14 @@ and the (un)official dropbox js api, more info can be found here:
 https://github.com/dropbox/dropbox-js/blob/stable/src/client.coffee
 https://www.dropbox.com/developers/core/docs
 
-**Drbx.accountInfo**  
-**Drbx.metadata**  
-**Drbx.readdir**  
-**Drbx.delta**  
-**Drbx.search**  
-**Drbx.writeFile**  
-**Drbx.remove**  
-**Drbx.copy**  
-**Drbx.fileopsDelete**  
-**Drbx.fileopsCopy**  
+**Drbx.accountInfo**
+**Drbx.metadata**
+**Drbx.readdir**
+**Drbx.delta**
+**Drbx.search**
+**Drbx.writeFile**
+**Drbx.readFile**
+**Drbx.remove**
+**Drbx.copy**
+**Drbx.fileopsDelete**
+**Drbx.fileopsCopy**
