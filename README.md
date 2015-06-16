@@ -1,4 +1,6 @@
 #drbx-js
+
+[![Join the chat at https://gitter.im/moszeed/drbx-js](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/moszeed/drbx-js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 a promise wrapper for the (un)official dropbox.js
 
 ####project targets
