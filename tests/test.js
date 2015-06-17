@@ -8,6 +8,8 @@
     var test = require('tape');
     var Drbx   = null;
     var cursor = null;
+    var savedMetadata = null;
+
 
     //set a generated dropbox token, from the developer console, here !
     var token = null;
@@ -107,6 +109,26 @@
             .catch(t.end);
     });
 
+    test('saveUrl', function(t) {
+
+        Drbx.saveUrl('https://pbs.twimg.com/media/B3TpeCkCIAAAUqL.jpg', '/bild.jpg')
+            .then(function(metadata) {
+                savedMetadata = metadata;
+                t.ok(Object.keys(metadata).length === 2, 'has metadata');
+                t.end();
+            })
+            .catch(t.end);
+    });
+
+    test('saveUrlJob', function(t) {
+
+        Drbx.saveUrlJob(savedMetadata.job)
+            .then(function(metadata) {
+                t.ok(metadata.status, 'has metadata');
+                t.end();
+            })
+            .catch(t.end);
+    });
 
     test('search', function (t) {
 

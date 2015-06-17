@@ -7,6 +7,8 @@
         //store original dropbox instance
         Drbx.Dropbox = require('./libs/dropbox.js');
 
+
+
         //storage for client/instance data
         Drbx.Client = null;
 
@@ -26,6 +28,10 @@
 
             //configure dropbox client
             Drbx.Client = new Drbx.Dropbox.Client(params.client);
+
+            //add missing urls
+            Drbx.Client._urls.saveUrl      = Drbx.Client._chooseApiServer() + '/1/save_url/auto/';
+            Drbx.Client._urls.save_url_job = Drbx.Client._chooseApiServer() + '/1/save_url_job/';
 
             //auth data
             if (params.auth) {
@@ -206,6 +212,48 @@
                     });
                 }
             );
+        };
+
+        /**
+         * [saveUrl description]
+         * @param  {[type]} url  [description]
+         * @param  {[type]} path [description]
+         * @return {[type]}      [description]
+         */
+        Drbx.saveUrl = function(url, targetPath) {
+
+            return new Promise(function(resolve, reject) {
+
+                var apiUrl = Drbx.Client._urls.saveUrl + "/" + (Drbx.Client._urlEncodePath(targetPath));
+                var xhr = new Drbx.Dropbox.Util.Xhr('POST', apiUrl);
+                    xhr.setParams({ url: url }).signWithOauth(Drbx.Client._oauth);
+
+                    Drbx.Client._dispatchXhr(xhr, function(error, metadata) {
+                        if (error) reject(error);
+                        else resolve(JSON.parse(metadata));
+                    });
+            });
+        };
+
+        /**
+         * [saveUrl description]
+         * @param  {[type]} url  [description]
+         * @param  {[type]} path [description]
+         * @return {[type]}      [description]
+         */
+        Drbx.saveUrlJob = function(jobId) {
+
+            return new Promise(function(resolve, reject) {
+
+                var apiUrl = Drbx.Client._urls.save_url_job + "/" + jobId;
+                var xhr = new Drbx.Dropbox.Util.Xhr('GET', apiUrl);
+                    xhr.signWithOauth(Drbx.Client._oauth);
+
+                    Drbx.Client._dispatchXhr(xhr, function(error, metadata) {
+                        if (error) reject(error);
+                        else resolve(metadata);
+                    });
+            });
         };
 
         /**
