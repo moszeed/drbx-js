@@ -1,10 +1,14 @@
 {
     "name": "drbx-js",
-    "version": "0.2.0",
+    "version": "0.2.2",
     "description": "Promise Dropbox-Api Wrapper",
     "main": "./src/drbx.js",
     "scripts": {
         "test": "browserify ./tests/*.js | tape-run"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:moszeed/drbx-js.git"
     },
     "keywords": [
         "dropbox",
