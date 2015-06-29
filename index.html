@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>drbx-js by moszeed</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/moszeed/drbx-js">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/moszeed/drbx-js/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/moszeed/drbx-js/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>drbx-js</h1>
+          <p>a promise wrapper for the (un)official dropbox.js</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/moszeed">moszeed</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="drbx-js" class="anchor" href="#drbx-js" aria-hidden="true"><span class="octicon octicon-link"></span></a>drbx-js</h1>
+
+<p><a href="https://gitter.im/moszeed/drbx-js?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/moszeed/drbx-js"></a></p>
+
+<p>a promise wrapper for the (un)official dropbox.js</p>
+
+<h4>
+<a id="project-targets" class="anchor" href="#project-targets" aria-hidden="true"><span class="octicon octicon-link"></span></a>project targets</h4>
+
+<ul>
+<li>promises for most used functions</li>
+<li>compatibility with browserify</li>
+<li>less coffescript</li>
+</ul>
+
+<h2>
+<a id="modifieddropboxbuild" class="anchor" href="#modifieddropboxbuild" aria-hidden="true"><span class="octicon octicon-link"></span></a>modifiedDropboxBuild</h2>
+
+<p>drbx-js uses a modified dropbox.js file, with fixed browserify/nodejs handling<br>
+until this get merged: <a href="https://github.com/dropbox/dropbox-js/pull/183">https://github.com/dropbox/dropbox-js/pull/183</a></p>
+
+<h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>how to use</h2>
+
+<p>install from npm</p>
+
+<pre><code>npm i drbx-js
+</code></pre>
+
+<h2>
+<a id="available-methods" class="anchor" href="#available-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>available methods</h2>
+
+<h4>
+<a id="authentication" class="anchor" href="#authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>authentication</h4>
+
+<p>these methods are used for initializing and connection to dropbox</p>
+
+<h5>
+<a id="drbxinit" class="anchor" href="#drbxinit" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.init</em>
+</h5>
+
+<h5>
+<a id="drbxlogin" class="anchor" href="#drbxlogin" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.login</em>
+</h5>
+
+<h4>
+<a id="save-urls-to-dropbox" class="anchor" href="#save-urls-to-dropbox" aria-hidden="true"><span class="octicon octicon-link"></span></a>save urls to dropbox</h4>
+
+<h5>
+<a id="drbxsaveurl" class="anchor" href="#drbxsaveurl" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.saveUrl</em>
+</h5>
+
+<p><strong>params</strong> url, path_in_dropbox)<br>
+<strong>response</strong> Object containing: status, jobid  </p>
+
+<h5>
+<a id="drbxsaveurljob" class="anchor" href="#drbxsaveurljob" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.saveUrlJob</em>
+</h5>
+
+<p><strong>params</strong> jobid<br>
+<strong>response</strong> Object containing: status, error (on error status)  </p>
+
+<h4>
+<a id="dir-file-methods" class="anchor" href="#dir-file-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>dir, file methods</h4>
+
+<p>following function have matching parameters with the Dropbox Core HTTP API<br>
+and the (un)official dropbox js api, more info can be found here:<br>
+<a href="https://github.com/dropbox/dropbox-js/blob/stable/src/client.coffee">https://github.com/dropbox/dropbox-js/blob/stable/src/client.coffee</a><br>
+<a href="https://www.dropbox.com/developers/core/docs">https://www.dropbox.com/developers/core/docs</a>  </p>
+
+<h5>
+<a id="drbxaccountinfo" class="anchor" href="#drbxaccountinfo" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.accountInfo</em>
+</h5>
+
+<h5>
+<a id="drbxmetadata" class="anchor" href="#drbxmetadata" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.metadata</em>
+</h5>
+
+<h5>
+<a id="drbxreaddir" class="anchor" href="#drbxreaddir" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.readdir</em>
+</h5>
+
+<h5>
+<a id="drbxdelta" class="anchor" href="#drbxdelta" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.delta</em>
+</h5>
+
+<h5>
+<a id="drbxsearch" class="anchor" href="#drbxsearch" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.search</em>
+</h5>
+
+<h5>
+<a id="drbxwritefile" class="anchor" href="#drbxwritefile" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.writeFile</em>
+</h5>
+
+<h5>
+<a id="drbxreadfile" class="anchor" href="#drbxreadfile" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.readFile</em>
+</h5>
+
+<h5>
+<a id="drbxremove" class="anchor" href="#drbxremove" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.remove</em>
+</h5>
+
+<h5>
+<a id="drbxcopy" class="anchor" href="#drbxcopy" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.copy</em>
+</h5>
+
+<h5>
+<a id="drbxfileopsdelete" class="anchor" href="#drbxfileopsdelete" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.fileopsDelete</em>
+</h5>
+
+<h5>
+<a id="drbxfileopscopy" class="anchor" href="#drbxfileopscopy" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Drbx.fileopsCopy</em>
+</h5>
+
+<h2>
+<a id="usage-examples" class="anchor" href="#usage-examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>usage examples</h2>
+
+<h5>
+<a id="init-with-popup-driver-and-login" class="anchor" href="#init-with-popup-driver-and-login" aria-hidden="true"><span class="octicon octicon-link"></span></a>init, with popup driver and login</h5>
+
+<pre><code>var Drbx = require('../src/drbx.js');
+    Drbx.init({
+        client  : { key : [Dropbox API Key] },
+        auth    : new Drbx.Dropbox.AuthDriver.Popup({
+            receiverUrl     : [receiverUrl],
+            rememberUser    : true
+        })
+    });
+
+    Drbx.login()
+        .then(function isLoggedIn() {
+            console.log('user is logged in');
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+</code></pre>
+
+<h5>
+<a id="get-accountinfo" class="anchor" href="#get-accountinfo" aria-hidden="true"><span class="octicon octicon-link"></span></a>get accountInfo</h5>
+
+<pre><code>Drbx.accountInfo()
+    .then(function getUserData(userData) {
+        console.log(userData);
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
+</code></pre>
+
+<h5>
+<a id="save-by-a-given-url" class="anchor" href="#save-by-a-given-url" aria-hidden="true"><span class="octicon octicon-link"></span></a>save by a given url</h5>
+
+<pre><code>Drbx.saveUrl('http://url-to-someting', '/path/in/dropbox')
+    .then(function saveUrlResponse(metadata) {
+        console.log(metadata);
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
+</code></pre>
+
+<h5>
+<a id="read-root-dir" class="anchor" href="#read-root-dir" aria-hidden="true"><span class="octicon octicon-link"></span></a>read root dir</h5>
+
+<pre><code>Drbx.readdir('/')
+    .then(function getRootDirData(folderMetaData) {
+        console.log(folderMetaData);
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
+</code></pre>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
